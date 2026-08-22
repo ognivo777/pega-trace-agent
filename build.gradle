@@ -9,10 +9,31 @@ repositories {
     mavenCentral()
 }
 
+java {
+    sourceCompatibility = JavaVersion.VERSION_1_8
+    targetCompatibility = JavaVersion.VERSION_1_8
+}
+
 dependencies {
+    implementation("net.bytebuddy:byte-buddy:1.18.12")
+    implementation files('libs/prpublic.jar')
+    implementation files('libs/printegrint.jar')
     testImplementation platform('org.junit:junit-bom:5.10.0')
     testImplementation 'org.junit.jupiter:junit-jupiter'
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+}
+
+jar {
+    manifest {
+        attributes "Premain-Class": "org.ognivo777.pegatraces.MethodLoggerAgent"
+        attributes "Agent-Class": "org.ognivo777.pegatraces.MethodLoggerAgent"
+        attributes "Can-Redefine-Classes" : true
+        attributes "Can-Retransform-Classes" : true
+    }
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+    from {
+        configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
+    } { exclude 'META-INF/*.RSA', 'META-INF/*.SF', 'META-INF/*.DSA', 'META-INF/LICENSE', 'META-INF/NOTICE' }
 }
 
 test {
