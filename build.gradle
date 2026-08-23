@@ -16,6 +16,8 @@ java {
 
 dependencies {
     implementation("net.bytebuddy:byte-buddy:1.18.12")
+    implementation files('libs/prprivate-session.jar')
+    implementation files('libs/prenginext.jar')
     implementation files('libs/prpublic.jar')
     implementation files('libs/printegrint.jar')
     testImplementation platform('org.junit:junit-bom:5.10.0')
