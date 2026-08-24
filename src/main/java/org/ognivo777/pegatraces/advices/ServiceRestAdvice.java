@@ -5,7 +5,7 @@ import com.pega.pegarules.pub.context.PRThread;
 import com.pega.pegarules.pub.context.ThreadContainer;
 import net.bytebuddy.asm.Advice;
 
-public class ServiceRestAdvice implements PegaEventHandler {
+public class ServiceRestAdvice implements BasicClassMethodHandler {
 
     private static final String[] SERVICE_HANDLER_CLASSES = {
             "com.pega.pegarules.integration.engine.internal.services.ServiceAPI"
@@ -52,7 +52,7 @@ public class ServiceRestAdvice implements PegaEventHandler {
 
         //Do not worry, will be compiled as StringBuilder.append by javac
         String exitMessage =
-                "[" + mServiceType + "][" + duration / 1_000_000 + "ms][" + mDataVolume + "][" + prThreadName + "][" + requestorId + "] " +
+                "[SERVICE][" + duration / 1_000_000 + "ms][" + mServiceType + "][" + mDataVolume + "][" + prThreadName + "][" + requestorId + "] " +
                 mHttpMethod +
                 "|" + mServicePackage +
                 "|" + mServiceClass +

@@ -11,8 +11,11 @@ public class AdviceRegestry {
     private final List<PegaEventHandler> handlers = new ArrayList<>();
 
     public AdviceRegestry(AgentConfig config) {
-        //TODO fill advices by config
+        //TODO create and configure advices by config
         handlers.add(new ServiceRestAdvice());
+//        handlers.add(new ActivtyInternalAdvice());
+        handlers.add(new FlowAdvice());
+        handlers.add(new ConnectorAdvice());
     }
 
     public AgentBuilder apply(AgentBuilder agentBuilder, Instrumentation instrumentation) {
