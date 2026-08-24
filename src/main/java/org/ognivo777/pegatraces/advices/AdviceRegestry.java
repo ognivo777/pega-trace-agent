@@ -16,6 +16,7 @@ public class AdviceRegestry {
 //        handlers.add(new ActivtyInternalAdvice());
         handlers.add(new FlowAdvice());
         handlers.add(new ConnectorAdvice());
+        handlers.add(new QueueProcessAdvice());
     }
 
     public AgentBuilder apply(AgentBuilder agentBuilder, Instrumentation instrumentation) {

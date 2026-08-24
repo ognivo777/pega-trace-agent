@@ -60,11 +60,11 @@ public class ConnectorAdvice implements BasicClassMethodHandler {
 
         String exitMessage =
                 "[CONNECTOR][" + duration / 1_000_000 + "ms]" +
-                        "[" + connectorInstance.getPegaConnectorClass() + "]" +
-                        "[" + connectorInstance.getPageClass() + "]" +
-                        "[" + pyClassName + "][" + pyRuleName + "][" + pyRuleSet + ":" + pyRuleSetVersion + "][" +
-                        "[" + prThreadName + "][" + requestorId + "] " +
-                        " |" + (throwable != null ? throwable.getClass().getSimpleName() + ":" + throwable.getMessage() : "");
+                "[" + connectorInstance.getPegaConnectorClass() + "]" +
+                "[" + connectorInstance.getPageClass() + "]" +
+                "[" + pyClassName + "][" + pyRuleName + "][" + pyRuleSet + ":" + pyRuleSetVersion + "][" +
+                "[" + prThreadName + "][" + requestorId + "] " +
+                " |" + (throwable != null ? throwable.getClass().getSimpleName() + ":" + throwable.getMessage() : "");
 
         System.out.println(exitMessage);
 
